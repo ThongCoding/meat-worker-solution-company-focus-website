@@ -74,3 +74,53 @@ dots.forEach((li, key) => {
 window.onresize = function (event) {
   reloadSlider();
 };
+
+// form handlers
+// Find the form and add an event listener for submit
+document.querySelector("form").addEventListener("submit", function (e) {
+  e.preventDefault(); // Prevent the form from submitting the traditional way
+
+  // Get the values from the form fields
+  const firstName = document.querySelector('input[name="firstName"]').value;
+  const lastName = document.querySelector('input[name="lastName"]').value;
+  const contactNumber = document.querySelector(
+    'input[name="contactNumber"]'
+  ).value;
+  const company = document.querySelector('input[name="company"]').value;
+  const email = document.querySelector('input[name="email"]').value;
+  const areaOfInterest = document.querySelector(
+    'input[name="areaOfInterest"]'
+  ).value;
+  const businessChallenge = document.querySelector(
+    'textarea[name="businessChallenge"]'
+  ).value;
+
+  // Get the checkboxes
+  const termsCheckbox = document.querySelector('input[name="terms"]').checked; // The T&C checkbox
+  const newsletterCheckbox = document.querySelector(
+    'input[name="newsletter"]'
+  ).checked; // The optional checkbox
+
+  // Check if the T&C checkbox is checked
+  if (!termsCheckbox) {
+    alert("You must agree to the T&C and Privacy Policy before submitting.");
+    return; // Stop the form from submitting if the checkbox is not checked
+  }
+
+  // Email address where the form will be sent
+  const recipientEmail = "jordan@meatworkersolution.com.au"; // Replace with your actual email
+
+  // Build the mailto URL
+  const mailtoLink =
+    `mailto:${recipientEmail}?subject=Contact Form Submission&body=` +
+    `First Name: ${firstName}%0D%0A` +
+    `Last Name: ${lastName}%0D%0A` +
+    `Contact Number: ${contactNumber}%0D%0A` +
+    `Company: ${company}%0D%0A` +
+    `Email: ${email}%0D%0A` +
+    `Area of Interest: ${areaOfInterest}%0D%0A` +
+    `Business Challenge: ${businessChallenge}`;
+
+  // Open the email client with the form data
+  window.location.href = mailtoLink;
+});

@@ -64,53 +64,115 @@
     </header>
 
     <main>
-      <!-- Hero Section -->
-      <section id="hero-section">
-        <div class="hero-content | flow">
-          <h1 class="fs-primary-heading fw-bold">Meat Worker Solution</h1>
-          <p>Connecting skilled Vietnamese labor with opportunity</p>
-          <a href="about.html" class="button">About</a>
+      <!-- About Section -->
+      <section id="hero-section-connect">
+        <div class="hero-content-connect | flow">
+          <h1 class="fs-primary-heading fw-bold">Connect</h1>
         </div>
       </section>
 
-      <!-- Capabilities Section -->
-      <section
-        id="capabilities-section"
-        class="hero | text-center-sm-only padding-block-900"
-      >
-        <div class="capability">
-          <h1 class="fs-secondary-heading fw-bold">Our Capabilities</h1>
-        </div>
-        <div class="capability_container">
-          <p>
-            We are a Vietnamese team with a strong network in both Vietnam and
-            Australia, dedicated to connecting skilled meat workers with
-            opportunities in Australia. We specialize in sourcing and providing
-            qualified labor to meat companies and recruitment firms, ensuring a
-            reliable, efficient workforce that meets industry demands.
-          </p>
+      <!-- Contact Info Section -->
+      <section id="contact-info" class="container">
+        <div class="contact-details">
+          <div>
+            <h2>Contact</h2>
+            <ul class="contact-list">
+              <li><span>📞</span> (+61)0435549999</li>
+              <li><span>📧</span> jordan@meatworkersolution.com.au</li>
+              <li>
+                <span>📍</span> 5/15 Dorchester Street, South Brisbane, QLD,
+                4101, Australia
+              </li>
+            </ul>
+          </div>
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3538.7356027981445!2d153.01282061506115!3d-27.48287698289744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b915a08e6b0d943%3A0x5f4bcff0ef9a17c3!2s5%2F15%20Dorchester%20St%2C%20South%20Brisbane%20QLD%204101%2C%20Australia!5e0!3m2!1sen!2sau!4v1633503950923!5m2!1sen!2sau"
+              width="100%"
+              height="300"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
         </div>
       </section>
 
-      <section
-        id="get-started"
-        class="cta | margin-top-400 padding-block-900 bg-accent-400 text-neutral-100"
-      >
+      <!-- Form Section -->
+      <section id="form-section" class="bg-accent-400 text-neutral-100">
         <div class="container">
-          <div class="even-columns vertical-align-center">
+          <h2 class="fs-secondary-heading fw-bold">
+            Let Us Help You Build a Stronger Team!
+          </h2>
+          <form action="#" method="post" class="form-grid">
             <div>
-              <p class="fs-primary-heading fw-bold">
-                Let Us Help You Build a Stronger Team!
-              </p>
+              <input
+                type="text"
+                name="first_name"
+                placeholder="First Name"
+                required
+              />
             </div>
-            <div class="justify-self-end-md">
-              <a href="connect.html">
-                <button class="button" data-type="inverted">
-                  Let's Connect
-                </button></a
+            <div>
+              <input
+                type="text"
+                name="last_name"
+                placeholder="Last Name"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="company"
+                placeholder="Company"
+                required
+              />
+            </div>
+            <div>
+              <input type="email" name="email" placeholder="Email" required />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="contact_number"
+                placeholder="Contact Number"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="area_of_interest"
+                placeholder="Area of Interest"
+                required
+              />
+            </div>
+            <div class="full-width">
+              <textarea
+                name="business_challenge"
+                placeholder="What is your business challenge?"
+                required
+              ></textarea>
+            </div>
+            <div class="form-checkbox-label">
+              <input type="checkbox" name="terms" id="terms" />
+              <label for="terms"
+                >I have read and agree to your
+                <a href="#">T&C and Privacy Policy</a></label
               >
             </div>
-          </div>
+            <div class="form-checkbox-label">
+              <input type="checkbox" name="newsletter" id="newsletter" />
+              <label for="newsletter"
+                >I'd like to keep in touch and sign-up to your newsletter</label
+              >
+            </div>
+
+            <div class="full-width">
+              <button type="submit" class="button-form">Submit</button>
+            </div>
+          </form>
         </div>
       </section>
     </main>
