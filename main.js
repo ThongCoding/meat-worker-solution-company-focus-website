@@ -78,49 +78,44 @@ window.onresize = function (event) {
 // form handlers
 // Find the form and add an event listener for submit
 document.querySelector("form").addEventListener("submit", function (e) {
-  e.preventDefault(); // Prevent the form from submitting the traditional way
+  e.preventDefault();
 
-  // Get the values from the form fields
-  const firstName = document.querySelector('input[name="firstName"]').value;
-  const lastName = document.querySelector('input[name="lastName"]').value;
+  const firstName = document.querySelector('input[name="first_name"]').value;
+  const lastName = document.querySelector('input[name="last_name"]').value;
   const contactNumber = document.querySelector(
-    'input[name="contactNumber"]'
+    'input[name="contact_number"]'
   ).value;
   const company = document.querySelector('input[name="company"]').value;
   const email = document.querySelector('input[name="email"]').value;
   const areaOfInterest = document.querySelector(
-    'input[name="areaOfInterest"]'
+    'input[name="area_of_interest"]'
   ).value;
   const businessChallenge = document.querySelector(
-    'textarea[name="businessChallenge"]'
+    'textarea[name="business_challenge"]'
   ).value;
 
-  // Get the checkboxes
-  const termsCheckbox = document.querySelector('input[name="terms"]').checked; // The T&C checkbox
-  const newsletterCheckbox = document.querySelector(
-    'input[name="newsletter"]'
-  ).checked; // The optional checkbox
-
-  // Check if the T&C checkbox is checked
+  const termsCheckbox = document.querySelector('input[name="terms"]').checked;
   if (!termsCheckbox) {
     alert("You must agree to the T&C and Privacy Policy before submitting.");
-    return; // Stop the form from submitting if the checkbox is not checked
+    return;
   }
 
-  // Email address where the form will be sent
-  const recipientEmail = "jordan@meatworkersolution.com.au"; // Replace with your actual email
-
-  // Build the mailto URL
-  const mailtoLink =
-    `mailto:${recipientEmail}?subject=Contact Form Submission&body=` +
-    `First Name: ${firstName}%0D%0A` +
-    `Last Name: ${lastName}%0D%0A` +
-    `Contact Number: ${contactNumber}%0D%0A` +
-    `Company: ${company}%0D%0A` +
-    `Email: ${email}%0D%0A` +
-    `Area of Interest: ${areaOfInterest}%0D%0A` +
-    `Business Challenge: ${businessChallenge}`;
-
-  // Open the email client with the form data
-  window.location.href = mailtoLink;
+  // Send email via EmailJS
+  emailjs
+    .send("service_kzj73uw", "template_nv7sh55", {
+      from_name: firstName + " " + lastName,
+      contact_number: contactNumber,
+      company: company,
+      email: email,
+      area_of_interest: areaOfInterest,
+      business_challenge: businessChallenge,
+    })
+    .then(
+      function (response) {
+        alert("SUCCESS! Your message has been sent.");
+      },
+      function (error) {
+        alert("FAILED to send message. Please try again later.");
+      }
+    );
 });
