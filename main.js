@@ -24,7 +24,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 // Find the form and add an event listener for submit
 document.querySelector("form").addEventListener("submit", function (e) {
   e.preventDefault();
-  console.log("Form submission prevented, handling via JS"); // Test it in the browser console
 
   const firstName = document.querySelector('input[name="first_name"]').value;
   const lastName = document.querySelector('input[name="last_name"]').value;
@@ -42,26 +41,51 @@ document.querySelector("form").addEventListener("submit", function (e) {
 
   const termsCheckbox = document.querySelector('input[name="terms"]').checked;
   if (!termsCheckbox) {
-    alert("You must agree to the T&C and Privacy Policy before submitting.");
+    // Show error modal
+    const errorModal = document.getElementById("errorModal");
+    errorModal.style.display = "block";
+    console.log("Terms not accepted, showing error modal...");
     return;
   }
 
+  // Generate the message field by concatenating form data
+  const message = `
+    Name: ${firstName} ${lastName}
+    Company: ${company}
+    Contact Number: ${contactNumber}
+    Email: ${email}
+    Area of Interest: ${areaOfInterest}
+    Business Challenge: ${businessChallenge}
+  `;
+
   // Send email via EmailJS
   emailjs
-    .send("service_kzj73uw", "template_nv7sh55", {
+    .send("service_zhbt7jj", "template_nv7sh55", {
       from_name: firstName + " " + lastName,
       contact_number: contactNumber,
       company: company,
       email: email,
       area_of_interest: areaOfInterest,
       business_challenge: businessChallenge,
+      message: message,
     })
     .then(
       function (response) {
-        alert("SUCCESS! Your message has been sent.");
+        // Show success modal
+        const successModal = document.getElementById("successModal");
+        successModal.style.display = "block";
+        console.log("Form submitted successfully, showing success modal...");
       },
       function (error) {
         alert("FAILED to send message. Please try again later.");
       }
     );
+});
+
+// Close the modals when the close buttons are clicked
+document.querySelectorAll(".close-button").forEach((button) => {
+  button.addEventListener("click", function () {
+    const modal = button.closest(".modal");
+    modal.style.display = "none";
+  });
 });
