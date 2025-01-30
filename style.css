@@ -32,6 +32,7 @@
   --fs-body: var(--fs-400);
   --fs-primary-heading: var(--fs-800);
   --fs-secondary-heading: var(--fs-700);
+  --fs-third-heading: var(--fs-500);
   --fs-nav: var(--fs-500);
   --fs-button: var(--fs-300);
 
@@ -51,7 +52,7 @@
     --fs-body: var(--fs-500);
     --fs-primary-heading: var(--fs-900);
     --fs-secondary-heading: var(--fs-800);
-
+    --fs-third-heading: var(--fs-700);
     --fs-nav: var(--fs-300);
   }
 }
@@ -772,6 +773,11 @@ input:where([type="text"], [type="email"], ) {
   line-height: 1.1;
 }
 
+.fs-third-heading {
+  font-size: var(--fs-third-heading);
+  line-height: 1.1;
+}
+
 .fs-300 {
   font-size: var(--fs-300);
 }
@@ -957,6 +963,20 @@ input:where([type="text"], [type="email"], ) {
     max-width: 900px; /* Optional: Constrain the text content width */
 }
 
+.smallcontainer p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    width: 100%; /* Set the width to 100% to span across the section */
+    max-width: none; /* Remove the maximum width restriction */
+    margin: 0 auto;
+    padding: 20px;
+  margin-top: 0px;
+  max-width: 800px;
+}
+
 
 @media (max-width: 47em) {
     .capability h1 {
@@ -965,6 +985,9 @@ input:where([type="text"], [type="email"], ) {
 
     .capability_container p {
         font-size: 1rem; /* Adjust paragraph size accordingly */
+    }
+    .smallcontainer p{
+       font-size: 1rem; /* Adjust paragraph size accordingly */
     }
 }
 
